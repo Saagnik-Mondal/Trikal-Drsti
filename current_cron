@@ -1,1 +1,1 @@
-0 6 * * * /opt/homebrew/bin/python3 "/Volumes/X9 Pro/Resume Project/WATCH/Trikal-Drsti/auto_uploader.py" >> "/Volumes/X9 Pro/Resume Project/WATCH/Trikal-Drsti/auto_upload.log" 2>&1
+0 6 * * * /usr/bin/python3 "/Volumes/X9 Pro/Resume Project/WATCH/Trikal-Drsti/auto_uploader.py" >> "/Volumes/X9 Pro/Resume Project/WATCH/Trikal-Drsti/auto_upload.log" 2>&1
