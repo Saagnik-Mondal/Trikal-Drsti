@@ -2,3 +2,12 @@ venv/
 __pycache__/
 *.pyc
 .DS_Store
+secret_uploader.py
+
+
+
+auto_uploader.py
+auto_upload.log
+
+uploads/
+web_ui/node_modules/

@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-red: #ff003c;
+  --neon-yellow: #fcee0a;
+  --bg-dark: #050505;
+  --panel-bg: rgba(0, 20, 30, 0.9);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--neon-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* CRT Scanline Effect */
+body::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px var(--neon-cyan);
+  text-align: center;
+  border-bottom: 2px solid var(--neon-cyan);
+  padding: 20px 0;
+  margin-bottom: 20px;
+  background: rgba(0,0,0,0.5);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  height: 90vh;
+}
+
+/* Panels */
+.panel {
+  border: 1px solid var(--neon-cyan);
+  background: var(--panel-bg);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.panel::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 15px; height: 15px;
+  border-top: 3px solid var(--neon-cyan);
+  border-left: 3px solid var(--neon-cyan);
+}
+.panel-header {
+  font-family: 'Orbitron';
+  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Drop Zone */
+.drop-zone {
+  border: 2px dashed var(--neon-cyan);
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(0,255,255,0.05);
+  margin-bottom: 20px;
+}
+.drop-zone:hover {
+  background: rgba(0, 243, 255, 0.15);
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+.upload-status {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Terminal */
+.terminal {
+  flex: 1;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  overflow-y: auto;
+  font-family: monospace;
+  border: 1px solid #333;
+  max-height: 600px;
+}
+.log-entry { margin-bottom: 2px; }
+.log-entry.red { color: var(--neon-red); }
+.log-entry.yellow { color: var(--neon-yellow); }
+.log-entry.cyan { color: var(--neon-cyan); }
+.log-entry.green { color: #0f0; }
+
+/* Status HUD */
+.hud-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.hud-card {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+.hud-val {
+  font-family: 'Orbitron';
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+.hud-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Timeline/Trace placeholder */
+.timeline-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #111;
+  padding: 2px 0;
+  font-size: 0.8rem;
+}
+.timeline-header {
+  font-weight: bold;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+.analysis-window {
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Blink Animation */
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s infinite step-end; }
+
+/* Conflicts Panel */
+.conflicts-window {
+  max-height: 150px;
+  overflow-y: auto;
+  background: rgba(255, 200, 0, 0.05);
+  border: 1px solid rgba(255, 200, 0, 0.3);
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.conflict-card {
+  background: rgba(0, 0, 0, 0.5);
+  border-left: 3px solid var(--neon-yellow);
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.conflict-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.conflict-views {
+  color: var(--neon-yellow);
+  font-weight: bold;
+}
+
+.conflict-severity {
+  font-family: 'Orbitron';
+}
+
+.conflict-desc {
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.conflict-resolution {
+  color: #888;
+  font-size: 0.8rem;
+}
