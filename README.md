@@ -2,7 +2,7 @@
 
 Trikal-Drsti ("Three-Time Vision") is a mathematically rigorous temporal reasoning system designed to analyze time-series data across multiple scales (Short, Mid, Long). It resolves conflicting signals using a weighted consensus mechanism with safety overrides.
 
-## 🚀 Features
+## Features
 
 - **Multi-Scale Analysis**: Simultaneously analyzes Short-term (Z-score), Mid-term (Linear Regression), and Long-term (Structural Deviation) trends.
 - **Weighted Consensus**: Resolves conflicts by calculating `Score = Confidence * Weight`.
@@ -10,7 +10,7 @@ Trikal-Drsti ("Three-Time Vision") is a mathematically rigorous temporal reasoni
 - **Traceable Reasoning**: Outputs "Sci-Fi" style logs with explicit mathematical justification for every decision.
 - **Visualizations**: Generates dark-mode timeline plots for post-analysis review.
 
-## 🛠 Usage
+## Usage
 
 ### Basic Run
 ```bash
@@ -52,7 +52,7 @@ Then run:
 python main.py --dataset my_data.json --plot
 ```
 
-## 🧠 Core Logic
+## Core Logic
 
 ### 1. Sentiment Enums
 The system classifies market/signal states into strictly defined Enums:
@@ -78,7 +78,7 @@ The **ResolutionEngine** determines the final output state:
 2.  **Safety Override**: If **ShortTerm** detects `CRASH` with confidence > 0.8, it overrides all other signals immediately to prioritize safety.
 3.  **Conflict Detection**: Explicitly flags contradictions (e.g., Short-term Volatility vs. Long-term Stability).
 
-## 📊 Visualization
+## Visualization
 When running with `--plot`, the system generates `trikal_drsti_vis.png`:
 - **Top Panel**: The raw signal value.
 - **Bottom Panel**: Confidence levels for Short, Mid, and Long term views over time.
