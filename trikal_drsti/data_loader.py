@@ -219,8 +219,6 @@ class UniversalLoader:
         
         with open(self.file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
-        
-        # Try to parse as complete JSON
         try:
             data = json.loads(content)
             raw_items = self._normalize_json_data(data)
@@ -231,8 +229,6 @@ class UniversalLoader:
         if not raw_items:
             print(f"[{self.dataset_name}] No usable data found in JSON file")
             return
-        
-        # Extract time-series from items
         for item in raw_items:
             self._extract_timeseries_from_item(item)
 
